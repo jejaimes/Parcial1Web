@@ -2,6 +2,14 @@
   font-family: 'Satisfy', cursive;
 }
 
-.price {
+.bold {
   font-weight: bold;
+}
+
+#categoria {
+  font-weight: bold;
+}
+
+.carrito {
+  display: inline;
 }
