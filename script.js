@@ -49,6 +49,7 @@ function cancelOrder () {
 }
 
 function confirmOrder () {
+  // eslint-disable-next-line no-console
   console.log(order);
   // order = []
   // orderDetail()
