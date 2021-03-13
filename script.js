@@ -1,6 +1,7 @@
-const url = './productos.json'
+const url = 'https://gist.githubusercontent.com/josejbocanegra/9a28c356416badb8f9173daf36d1460b/raw/5ea84b9d43ff494fcbf5c5186544a18b42812f09/restaurant.json'// './productos.json'
 let listaProductos
 const categorias = ['burgers', 'tacos', 'salads', 'desserts', 'drinks&sides']
+const imgCarrito = '<img src="./img/carrito.png" alt="Carrito de compras" class="w-25 m-1 inline">'
 let order = []
 
 function addQuantity () {
@@ -12,11 +13,11 @@ function addQuantity () {
   amounts[this.value].textContent = parseFloat(amounts[this.value].textContent) + parseFloat(prices[this.value].textContent)
   quantities[this.value].textContent = parseFloat(quantities[this.value].textContent) + 1
   total.textContent = 'Total: $' + (parseFloat(total.textContent.split('$')[1]) + parseFloat(prices[this.value].textContent))
-  const items = document.getElementById('items')
+  const items = document.getElementById('carrito')
   let cont = items.textContent.split(' ')
   cont = parseInt(cont[0])
   cont++
-  items.textContent = cont + ' items'
+  items.innerHTML = imgCarrito + cont + ' items'
 }
 
 function reduceQuantity () {
@@ -33,18 +34,18 @@ function reduceQuantity () {
     quantities[this.value].textContent = parseFloat(quantities[this.value].textContent) - 1
     total.textContent = 'Total: $' + (parseFloat(total.textContent.split('$')[1]) - parseFloat(prices[this.value].textContent))
   }
-  const items = document.getElementById('items')
+  const items = document.getElementById('carrito')
   let cont = items.textContent.split(' ')
   cont = parseInt(cont[0])
   cont--
-  items.textContent = cont + ' items'
+  items.innerHTML = imgCarrito + cont + ' items'
 }
 
 function cancelOrder () {
   order = []
   orderDetail()
-  const items = document.getElementById('items')
-  items.textContent = '0 items'
+  const items = document.getElementById('carrito')
+  items.innerHTML = imgCarrito + '0 items'
 }
 
 function confirmOrder () {
@@ -54,11 +55,11 @@ function confirmOrder () {
 }
 
 function addItem () {
-  const items = document.getElementById('items')
+  const items = document.getElementById('carrito')
   let cont = items.textContent.split(' ')
   cont = parseInt(cont[0])
   cont++
-  items.textContent = cont + ' items'
+  items.innerHTML = imgCarrito + cont + ' items'
   const detail = this.value.split(';')
   const index = order.findIndex(element => element.description === detail[0])
   if (index !== -1) {
