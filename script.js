@@ -12,6 +12,11 @@ function addQuantity () {
   amounts[this.value].textContent = parseFloat(amounts[this.value].textContent) + parseFloat(prices[this.value].textContent)
   quantities[this.value].textContent = parseFloat(quantities[this.value].textContent) + 1
   total.textContent = 'Total: $' + (parseFloat(total.textContent.split('$')[1]) + parseFloat(prices[this.value].textContent))
+  const items = document.getElementById('items')
+  let cont = items.textContent.split(' ')
+  cont = parseInt(cont[0])
+  cont++
+  items.textContent = cont + ' items'
 }
 
 function reduceQuantity () {
@@ -28,16 +33,24 @@ function reduceQuantity () {
     quantities[this.value].textContent = parseFloat(quantities[this.value].textContent) - 1
     total.textContent = 'Total: $' + (parseFloat(total.textContent.split('$')[1]) - parseFloat(prices[this.value].textContent))
   }
+  const items = document.getElementById('items')
+  let cont = items.textContent.split(' ')
+  cont = parseInt(cont[0])
+  cont--
+  items.textContent = cont + ' items'
 }
 
 function cancelOrder () {
-  
+  order = []
+  orderDetail()
+  const items = document.getElementById('items')
+  items.textContent = '0 items'
 }
 
 function confirmOrder () {
   console.log(order)
-  //order = []
-  //orderDetail()
+  // order = []
+  // orderDetail()
 }
 
 function addItem () {
@@ -122,16 +135,8 @@ function orderDetail () {
   col1.appendChild(p)
   btnGroup = document.createElement('div')
   btnGroup.className = 'row-cols-2 d-inline-flex'
-  btn1 = document.createElement('button')
-  btn1.className = 'btn btn-outline-dark cancel m-1 p-1'
-  btn1.textContent = 'Cancel'
-  btn1.onclick = cancelOrder
-  btn2 = document.createElement('button')
-  btn2.className = 'btn btn-outline-dark confirm m-1 p-1 w-75'
-  btn2.textContent = 'Confirm order'
-  btn2.onclick = confirmOrder
-  btnGroup.appendChild(btn1)
-  btnGroup.appendChild(btn2)
+  btnGroup.innerHTML = '<button class="btn btn-outline-dark cancel m-1 p-1" data-bs-toggle="modal" data-bs-target="#cancelModel">Cancel</button>' +
+  '<button id="confirm" class="btn btn-outline-dark confirm m-1 p-1 w-75">Confirm order</button>'
   col2.appendChild(btnGroup)
   row.appendChild(col1)
   row.appendChild(col2)
@@ -139,6 +144,8 @@ function orderDetail () {
   tabla.appendChild(tablaB)
   contenido.appendChild(tabla)
   contenido.appendChild(row)
+  document.getElementById('confirm').onclick = confirmOrder
+  document.getElementById('cancel').onclick = cancelOrder
 }
 
 function crearCardsProductos (productos) {
