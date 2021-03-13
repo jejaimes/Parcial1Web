@@ -10,6 +10,14 @@
   font-weight: bold;
 }
 
-.carrito {
+.inline {
   display: inline;
+}
+
+.cancel {
+  background-color: #F25260;
+}
+
+.confirm {
+  background-color: #F2E6D8;
 }

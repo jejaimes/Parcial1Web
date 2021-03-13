@@ -12,20 +12,20 @@
     <link href="./styles.css" rel="stylesheet">
     <title>Restaurant & Lounge</title>
   </head>
-  <body>
+  <body class="container">
     <header class="container-fluid">
       <div class="row">
         <div class="col-10">
           <h1 class="logo">Restaurant & Lounge</h1>
         </div>
         <div class="col-2">
-          <button type="button" class="btn btn-light"><img src="./img/carrito.png" alt="Carrito de compras" class="w-25 carrito"><p id="items" class="carrito">0 items</p></button>
+          <button type="button" class="btn btn-light" id="carrito"><img src="./img/carrito.png" alt="Carrito de compras" class="w-25 inline"><p id="items" class="inline">0 items</p></button>
         </div>
       </div>
     </header>
     <hr>
-    <section class="banner container">
-      <img src="/img/banner.png" alt="Banner de hamburguesa" class="img mx-auto">
+    <section class="banner row">
+      <div class="col"><img src="/img/banner.png" alt="Banner de hamburguesa" class="img-fluid centering w-100"></div>
     </section>
     <hr>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -37,6 +37,7 @@
         <a class="nav-item nav-link" id="drinks&sides">Drinks & Sides</a>
       </div>
     </nav>
+    <hr>
     <main class="container">
       <h2 class="text-center" id="categoria">Burgers</h2>
       <hr>
