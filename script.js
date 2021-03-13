@@ -10,9 +10,9 @@ function addQuantity () {
   const quantities = document.getElementsByClassName("quantity");
   const total = document.getElementById("total");
   order[this.value].quantity++;
-  amounts[this.value].textContent = parseFloat(amounts[this.value].textContent) + parseFloat(prices[this.value].textContent);
-  quantities[this.value].textContent = parseFloat(quantities[this.value].textContent) + 1;
-  total.textContent = "Total: $" + (parseFloat(total.textContent.split("$")[1]) + parseFloat(prices[this.value].textContent));
+  amounts[this.value].textContent = (parseFloat(amounts[this.value].textContent) + parseFloat(prices[this.value].textContent)).toFixed(2);
+  quantities[this.value].textContent = parseInt(quantities[this.value].textContent) + 1;
+  total.textContent = "Total: $" + (parseFloat(total.textContent.split("$")[1]) + parseFloat(prices[this.value].textContent)).toFixed(2);
   const items = document.getElementById("carrito");
   let cont = items.textContent.split(" ");
   cont = parseInt(cont[0]);
@@ -30,9 +30,9 @@ function reduceQuantity () {
     orderDetail();
   } else {
     order[this.value].quantity--;
-    amounts[this.value].textContent = parseFloat(amounts[this.value].textContent) - parseFloat(prices[this.value].textContent);
-    quantities[this.value].textContent = parseFloat(quantities[this.value].textContent) - 1;
-    total.textContent = "Total: $" + (parseFloat(total.textContent.split("$")[1]) - parseFloat(prices[this.value].textContent));
+    amounts[this.value].textContent = (parseFloat(amounts[this.value].textContent) - parseFloat(prices[this.value].textContent)).toFixed(2);
+    quantities[this.value].textContent = parseInt(quantities[this.value].textContent) - 1;
+    total.textContent = "Total: $" + (parseFloat(total.textContent.split("$")[1]) - parseFloat(prices[this.value].textContent)).toFixed(2);
   }
   const items = document.getElementById("carrito");
   let cont = items.textContent.split(" ");
@@ -87,6 +87,7 @@ function orderDetail () {
   const categoria = document.getElementById("categoria");
   categoria.textContent = "Order detail";
   const contenido = document.getElementById("productos");
+  contenido.className = "";
   contenido.innerHTML = "";
   const tabla = document.createElement("table");
   tabla.className = "table table-striped";
@@ -152,6 +153,7 @@ function orderDetail () {
 
 function crearCardsProductos (productos) {
   const contenido = document.getElementById("productos");
+  contenido.className = "row row-cols-4";
   contenido.innerHTML = "";
   let col;
   let card;
